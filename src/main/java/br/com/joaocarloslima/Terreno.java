@@ -10,11 +10,13 @@ public class Terreno {
 
     //Construtor da classe terreno
     public Terreno(Batata batata, Cenoura cenoura, Morango morango, int x, int y) {
-        this.batata = batata;
-        this.cenoura = cenoura;
-        this.morango = morango;
         this.x = x;
         this.y = y;
+    }
+
+    public Terreno(int i, int j) {
+        this.x = i;
+        this.y = j;
     }
 
     //Métodos de acesso aos parâmetros da classe
@@ -59,51 +61,45 @@ public class Terreno {
     }
 
     //Metodo para plantar uma batata
-    public void plantar(Batata batata){
-        if (this.batata == null && morango == null && cenoura == null){
+    public void plantar(Batata batata) {
+        if (this.batata == null && morango == null && cenoura == null) {
             this.batata = batata;
         }
     }
 
     //Metodo para plantar um morango
-    public void plantar(Morango morango){
-        if (batata == null && this.morango == null && cenoura == null){
+    public void plantar(Morango morango) {
+        if (batata == null && this.morango == null && cenoura == null) {
             this.morango = morango;
         }
     }
 
     //Metodo para plantar uma cenoura
-    public void plantar(Cenoura cenoura){
-        if (batata == null && morango == null && this.cenoura == null){
+    public void plantar(Cenoura cenoura) {
+        if (batata == null && morango == null && this.cenoura == null) {
             this.cenoura = cenoura;
         }
     }
 
-    /*Metodo para colher
-    public void colher (Celeiro celeiro){
-            if (batata != null && batata.podeColher()){
-                celeiro.armazenarBatata(batata);
-                this.batata = null;
-            } else if (morango != null && morango.podeColher()) {
-                celeiro.armazenarMorango(morango);
-                this.morango = null;
-            } else if (cenoura != null && cenoura.podeColher()){
-                celeiro.armazenarCenoura (cenoura);
-                this.cenoura = null;
-            }
+    public void colher(Celeiro celeiro) {
+        if (batata != null && batata.podeColher()) {
+            celeiro.armazenarBatata();
+            this.batata = null;
+        } else if (morango != null && morango.podeColher()) {
+            celeiro.armazenarMorango();
+            this.morango = null;
+        } else if (cenoura != null && cenoura.podeColher()) {
+            celeiro.armazenarCenoura();
+            this.cenoura = null;
         }
-
-        public boolean estaOcupado(){
-            if (batata != null && batata.podeColher()){
-                celeiro.armazenarBatata(batata);
-                return false;
-            } else if (morango != null && morango.podeColher()) {
-                celeiro.armazenarMorango(morango);
-                return false;
-            } else if (cenoura != null && cenoura.podeColher()){
-                celeiro.armazenarCenoura (cenoura);
-                return false;
-            }
-        } */
     }
+
+    public boolean estaOcupado() {
+        if (batata != null || morango != null || cenoura != null) {
+            return true;
+        }
+        return false;
+
+    }
+}
 
